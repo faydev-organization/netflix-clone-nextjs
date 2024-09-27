@@ -3,6 +3,8 @@
   "rules": {
     "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off",
-    "@next/next/no-img-element": "off"
+    "@next/next/no-img-element": "off",
+    "no-var": "error", // Enforce the use of let or const instead of var
+    "prefer-const": "warn" // Suggest using const if a variable is not reassigned
   }
 }
