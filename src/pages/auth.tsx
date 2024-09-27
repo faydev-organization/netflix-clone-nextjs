@@ -10,12 +10,16 @@ import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
+// Define an interface for the event types
+interface ChangeEvent {
+  target: { value: string };
+}
+
 const Auth = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-
   const [variant, setVariant] = useState("login");
 
   const toggleVariant = useCallback(() => {
@@ -32,9 +36,10 @@ const Auth = () => {
         redirect: false,
         callbackUrl: "/profiles",
       });
-      router.push("/profiles");
       if (result?.error) {
         console.error("Login error:", result.error);
+      } else {
+        router.push("/profiles");
       }
     } catch (error) {
       console.error("Login failed:", error);
@@ -48,10 +53,9 @@ const Auth = () => {
         name,
         password,
       });
-
       login();
     } catch (error) {
-      console.log(error);
+      console.error("Registration error:", error);
     }
   }, [email, name, password, login]);
 
@@ -77,7 +81,7 @@ const Auth = () => {
                 <Input
                   label="Username"
                   id="name"
-                  onChange={(ev: any) => setName(ev.target.value)}
+                  onChange={(ev: ChangeEvent) => setName(ev.target.value)}
                   type="text"
                   value={name}
                 />
@@ -85,14 +89,14 @@ const Auth = () => {
               <Input
                 label="Email"
                 id="email"
-                onChange={(ev: any) => setEmail(ev.target.value)}
+                onChange={(ev: ChangeEvent) => setEmail(ev.target.value)}
                 type="email"
                 value={email}
               />
               <Input
                 label="Password"
                 id="password"
-                onChange={(ev: any) => setPassword(ev.target.value)}
+                onChange={(ev: ChangeEvent) => setPassword(ev.target.value)}
                 type="password"
                 value={password}
               />
@@ -106,41 +110,17 @@ const Auth = () => {
             <div className="flex flex-row items-center gap-4 mt-8 justify-center">
               <div
                 onClick={() => signIn("google", { callbackUrl: "/profiles" })}
-                className="
-              w-10
-              h-10
-              bg-white
-              rounded-full
-              flex
-              items-center
-              justify-center
-              cursor-pointer
-              hover:opacity-80
-              transition
-              "
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition"
               >
                 <FcGoogle size={30} />
               </div>
               <div
                 onClick={() => signIn("github", { callbackUrl: "/profiles" })}
-                className="
-              w-10
-              h-10
-              bg-white 
-              rounded-full
-              flex
-              items-center
-              justify-center
-              cursor-pointer
-              hover:opacity-80
-              transition
-              text-black
-              "
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition text-black"
               >
                 <FaGithub size={30} />
               </div>
             </div>
-
             <p className="text-neutral-500 mt-12">
               {variant === "login"
                 ? "First time using Netflix?"
