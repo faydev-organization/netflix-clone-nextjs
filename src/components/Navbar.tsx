@@ -5,7 +5,6 @@ import { BsChevronDown, BsSearch, BsBell } from "react-icons/bs";
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "./MobileMenu";
 import AccountMenu from "./AccountMenu";
-import Image from "next/image";
 
 const TOP_OFFSET = 66;
 
@@ -52,13 +51,7 @@ const Navbar = () => {
     ${showBackground ? "bg-zinc-900 bg-opacity-90" : ""}
    `}
       >
-        <Image
-          width={100}
-          height={100}
-          className="h-4 lg:h-7"
-          src="/images/logo.png"
-          alt="Logo"
-        />
+        <img className="h-4 lg:h-7" src="/images/logo.png" alt="Logo" />
         <div
           className="
         flex-row
@@ -100,12 +93,7 @@ const Navbar = () => {
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-              <Image
-                width={600}
-                height={600}
-                src="/images/default-blue.jpg"
-                alt="profile"
-              />
+              <img src="/images/default-blue.jpg" alt="profile" />
             </div>
             <BsChevronDown
               className={`text-white transition ${

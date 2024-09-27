@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
+
 import { BsFillPlayFill } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
 import FavoriteButton from "./FavoriteButton";

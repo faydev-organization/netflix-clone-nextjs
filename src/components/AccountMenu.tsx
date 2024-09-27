@@ -1,7 +1,6 @@
 import React from "react";
 import { signOut } from "next-auth/react";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import Image from "next/image";
 
 interface AccountMenuProps {
   visible?: boolean;
@@ -17,9 +16,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
     <div className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-500">
       <div className="flex flex-col gap-3">
         <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
-          <Image
-            width={600}
-            height={600}
+          <img
             className="w-6 rounded-md"
             src="/images/default-blue.jpg"
             alt="profile"
