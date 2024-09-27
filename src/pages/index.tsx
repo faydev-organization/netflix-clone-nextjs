@@ -26,7 +26,8 @@ export async function getServerSideProps(context: NextPageContext) {
   };
 }
 
-const index = () => {
+const Index = () => {
+  // Changed 'index' to 'Index'
   const { data: movies = [] } = useMovieList();
   const { data: favorites = [] } = useFavorites();
   const { isOpen, closeModal } = useInfoModal();
@@ -45,4 +46,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
