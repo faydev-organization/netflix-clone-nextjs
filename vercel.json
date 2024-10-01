@@ -2,13 +2,13 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/next",
-      "config": {
-        "includeFiles": ["prisma/**"]
-      }
+      "use": "@vercel/next"
     }
   ],
-  "hooks": {
-    "build": "prisma generate"
+  "build": {
+    "env": {
+      "DATABASE_URL": "@database-url"
+    },
+    "build": "prisma generate && next build"
   }
 }
