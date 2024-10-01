@@ -9,6 +9,6 @@
     "env": {
       "DATABASE_URL": "@database-url"
     },
-    "build": "prisma generate && next build"
+    "build": "next build"
   }
 }
